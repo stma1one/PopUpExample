@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PopUpExample.ViewModels" x:DataType="local:MainPageViewModel"
+             x:Class="PopUpExample.Views.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Check PopUp Examples" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Grid  BackgroundColor="Gray" HorizontalOptions="Center" Margin="10" Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Command="{Binding SimplePopCommand}" Clicked="Button_Clicked"   Text="Simple Popup"></Button>
+        <Button Grid.Row="1" Command="{Binding GetResponsePopCommand}" Text="PopUp with boolean response"></Button>
+            <Button Grid.Row="2" Command="{Binding ActionSheetPopCommand}" Text="PopUp with ActionSheet (menu)"></Button>
+            <Button Grid.Row="3" Command="{Binding ActionSheetPopWithDeleteCommand}" Text="PopUp with ActionSheet and Delete"></Button>
+            <Button Grid.Row="4" Command="{Binding PopGetPromptCommand}" Text="PopUp with a Prompt"></Button>
+            <Button Grid.Row="5" Command="{Binding PopDefineKeyboardCommand}" Text="PopUp with a numeric Keyboard"></Button>
+        </Grid>
+        <Label Text="{Binding Message}" TextColor="Brown" FontSize="36"></Label>
+    </StackLayout>
+
+</ContentPage>
