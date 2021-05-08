@@ -11,6 +11,7 @@ namespace PopUpExample.ViewModels
         #region members
         
         private string message;
+        private App curr;
         #endregion
         #region Properties
         public string Message
@@ -30,16 +31,15 @@ namespace PopUpExample.ViewModels
         #region Constructor
         public MainPageViewModel()
         {
-           
+            curr = (App)Application.Current;
             message = "no response recorded yet";
 
-            SimplePopCommand = new Command(async () => await Application.Current.MainPage.DisplayAlert("ALERT", "You have been alerted", "OK"));
+            SimplePopCommand = new Command(async () => await curr.MainPage.DisplayAlert("ALERT", "You have been alerted", "OK"));
 
             GetResponsePopCommand = new Command(async () =>
             {
-                bool res = await Application.Current.MainPage.DisplayAlert("Best Team Ever", "Is it Hapoel Holon?", "Yes", "No");
-                if (res)
-                    Message = "Hapoel Holon is the best";
+                if( await curr.MainPage.DisplayAlert("Best Team Ever", "Is it Hapoel Holon?", "Yes", "No"))
+                     Message = "Hapoel Holon is the best";
                 else
                     Message = "You are Wrong Hapoel Holon is the best";
             }
